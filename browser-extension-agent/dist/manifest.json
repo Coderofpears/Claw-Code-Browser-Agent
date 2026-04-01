@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "Autonomous Agent",
+  "version": "1.0.0",
+  "description": "An autonomous browser agent that navigates pages and executes actions based on user goals.",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "scripting",
+    "storage",
+    "sidePanel"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "side_panel": {
+    "default_path": "src/sidepanel/index.html"
+  },
+  "action": {
+    "default_title": "Open Autonomous Agent"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["src/sidepanel/*"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "autonomous-agent@extension",
+      "strict_min_version": "128.0"
+    }
+  }
+}
