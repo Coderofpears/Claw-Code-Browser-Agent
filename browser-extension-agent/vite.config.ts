@@ -5,7 +5,8 @@ import { resolve } from 'path';
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: 'dist',
+    outDir: 'dist-temp',
+    emptyOutDir: true,
     rollupOptions: {
       input: {
         sidepanel: resolve(__dirname, 'src/sidepanel/index.html'),
@@ -14,7 +15,7 @@ export default defineConfig({
       },
       output: {
         entryFileNames: '[name].js',
-        chunkFileNames: '[name].js',
+        chunkFileNames: 'chunks/[name].js',
         assetFileNames: '[name].[ext]',
       },
     },

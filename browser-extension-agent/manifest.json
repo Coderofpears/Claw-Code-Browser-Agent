@@ -14,26 +14,25 @@
     "<all_urls>"
   ],
   "background": {
-    "service_worker": "src/background/index.js",
-    "type": "module",
-    "scripts": ["src/background/index.js"]
+    "service_worker": "background.js",
+    "type": "module"
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["src/content/index.js"],
+      "js": ["content.js"],
       "run_at": "document_idle"
     }
   ],
   "side_panel": {
-    "default_path": "src/sidepanel/index.html"
+    "default_path": "sidepanel.html"
   },
   "action": {
     "default_title": "Open Autonomous Agent"
   },
   "web_accessible_resources": [
     {
-      "resources": ["src/content/overlay.js"],
+      "resources": ["chunks/*"],
       "matches": ["<all_urls>"]
     }
   ],
